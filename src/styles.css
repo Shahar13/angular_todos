@@ -1,0 +1,227 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+/* @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/v4-shims.min.css'; */
+
+
+BODY{
+    box-sizing: border-box;
+}
+
+:host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.border{
+    border: solid 1px red !important;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #125699;
+}
+
+.fas, .far{
+    color: grey;
+    cursor: pointer;
+    margin-top: 12px;
+    font-size: 18px;
+
+}
+.fas:hover, .far:hover{
+    color: black;
+    cursor: pointer;
+}
+.icon_orange{
+    color: orange;
+}
+
+/* overwrite SCSS classes */
+.alert-danger {
+    color: #e21528;
+    background-color:transparent;
+    border-color: transparent;
+}
+
+.alert {
+    position: relative;
+    padding: 0.1rem 0.1rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    border-radius: 0;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+
+.btn_submit {
+    cursor: pointer !important;
+}
+
+.board{
+    width: 80%;
+    border: solid 1px #dee2e6;
+    border-radius: 7px;
+    padding: 25px;
+    box-shadow: 1px 3px 8px 3px #dfdfdf;
+}
+
+.board UL{
+    /* margin: 30px 0; */
+    margin: 10px 0;
+    padding: 0;
+}
+
+.board LI{
+    list-style: none;
+    padding: 5px 10px;
+    border-bottom: solid 1px #dee2e6;
+    /* display: flex; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 8px 0;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #f9d0ff;
+    color: white;
+    font-weight: 600;
+    box-shadow: 1px 3px 4px 5px #a6a6a6;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.logo_me{
+    box-shadow: 1px 3px 4px 5px #fff;
+    border-radius: 40px;
+}
+
+.content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app_user_connect{
+    width: 100%;
+}
+
+.form_user_connect{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form_sumbit{
+    margin-top: 20px; 
+    text-align: right;
+}
+
+.add_item_feedback_no_msg{
+    width: 100%;
+    color: red;
+}
+.add_item_feedback_yes_msg{
+    width: 100%;
+    color: green;
+}
+
+.btn-wrapper{
+    float: right;
+    margin: 20px 10px 0 0; 
+    overflow: hidden;
+}
+
+.pagination{
+    float: left;
+    margin: 27px 10px 0 0; 
+    padding: 2px 10px;
+    overflow: hidden;
+    background: lightgoldenrodyellow;
+    border-radius: 5px;
+    box-shadow: 1px 3px 4px lightgrey;
+}
+
+.paging{
+    color: grey;
+    cursor: pointer;
+    padding: 3px 5px;
+}
+
+.paging:hover{
+    color: black;
+}
+
+.ckbx{
+    margin: 13px 9px 0 0; 
+    vertical-align: top;
+}
+
+.task_done{
+    text-decoration: line-through;
+}
+
+.feedback_new{
+    font-size: 0.5rem;
+    color: red;
+    vertical-align: top;
+}
+
+.feedback_date{
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+    white-space: nowrap;
+    /* color: red; */
+}
+
+.bottom_paging{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prev, .next{
+    cursor: pointer;
+    font-weight: bold;
+}
+.prev:hover, .next:hover{
+    color: green;
+}
+.prev{
+    float: left;
+}
+.next{
+    float: right;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 575px) {
+
+}

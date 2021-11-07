@@ -1,0 +1,26 @@
+
+  <div class="board" style="margin: auto;">
+    
+    <form class="form_user_connect" [formGroup]="angForm" novalidate>
+      <div class="form-group">
+          <label>Name:</label> 
+          <input class="form-control" formControlName="userName" ng-model="userName" type="text">
+      </div>
+      
+      <div *ngIf="angForm.controls['userName'].invalid && (angForm.controls['userName'].dirty || angForm.controls['userName'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['userName'].errors.required">
+            Name is required.
+          </div>
+      </div>
+
+      <div class="form-group form_sumbit">
+        <button title="Submit" type="submit" (click)="saveUserName()"
+            [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+            Save
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+  

@@ -1,0 +1,86 @@
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <img class="logo_me" width="40" title="Shahar Haramati Cohen" src="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAbxQTFRFAAAA/3V1/2Rk/09P/zk5/yQk/xIS/wMD/3V1/1VV/ycn/wAA/21t/z09/3V1/0JC/19f/wcHvwBA/0lJfwCAAAD//3h4/AAA4QAAxgAAzQAA4AAA8wAA/zMzaQBAWQAAMgAAFwAAAAAABwAAGgAALQAAIACA7QAAUwCAAABAAACABQAANgAAWwAAfwAAnwAAOAAA9gAAYAAADgAAKwAARwAAYwAAYQAAQgAAJAAAMwAAQABAmQAA3QAA5gAAYwCAxAAAigAAUQAA6AAA1QAAqgAACwCAEQCAvQAA7wAAOgAAvwAACQAANABAiQAArgAA2gAAAAC/AwC/DQC/FgC/HwC/JwC/MAC/PgC/QAC/EwCAzgAACgAA9QAAOQC/LgC/IwC/CgC/MQAA8gAAlQAAagAAQAAAFQAAoQAAIQCAZwAANQAABAAA+wAAywAA3wAAEQAAtQAAOwAAIQAAZAAApwAAEgAAVQAAVQCARwCAWAAAXgBAtAAAzwAA6wAA+QAArAAAkwAAbAAAJgAAPQAA2AAAVAAAKAAAogAA3AAAKACAGwCAkQBApgAAiwAAcAAARgAAXQAAdAAAuQAA9A8IvwAAAJR0Uk5TAD2XzOr4/v9Kwff/buU/4Kb//9b//xH////////v/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5Yb9B0AAAJ9SURBVHicnZb3Q9QwFMdzXXe93BQPRT3HiQs0DnAfoAIuVERxnLi3OHDj3iKi4vqHzWqbtOnlvO8v7XvNp02TNwJARAnDtGwnmXRsyzQS0edhpdw0lJR2U3WBTBYqlM3EArm8CiDK59REoYgfziESRzO7WFARLXTE3FKpJCHEQa4tEaDVghIyb37bgoWLBARarSGiLLx08ZKlyypUy9tXrMSOVfRRWWYsbx6r8Yg1FUEd2NG5dh0i34n+B4TrN3SoEHxBof8pMGDjJjYCI13dm7egrdu2d0oI9NctV2TIDv7SndUef8F6+0Sk6O0P38GqN4/IIu/avQfxPWVEBgYfUSP40s9NFjs8rgYq9RBPWUKkuDFIkb0aBJK4dvk9osg+HeJixMuP/Q1NDKZxDnr3BxpDYAIY/v3BxhADmP790CGOHD4yfDQeMYOAxBHGkRGsY8dHT5w8dbpWq4URC9iChdopEpGE2MARzV50RoWMiWMckJReQace0Vl0LhiRVCG18xcujl4a4aKRfHlAQJwowhb5ytDVa9dvePnS7TOO9PswWmFu3mJIwNjiIqsQ6qBxMc4dlrCVGuQ2d5hCwGiQO3eZwwjCUodU7jFHIgh+LTJB7bSQYjrkPrNdIZEfaJCHzE4J5QI9ejxYD3lCzaxYlEjuP518FkLGnnPkBbMzYulDfiK/rL56/ebtRNu79x8+egHz6TMdlJcKbIAoyvg42xS/wLIyjqa+xCGT03yaQvvjzeLrMJoJIV3fhKyUmp8fnGSBvv+Y/Tn16/ef2em/PWK5kFqS3PhiilI53CwtHRJur6CJJg74USFG6qNCMwcS0MSxh+i/D1dUuiPcP+XJqp5j3s2gAAAAAElFTkSuQmCC" />
+  <div class="spacer"></div>
+  <!-- <span>Welcome</span> -->
+  <span *ngIf="userName">Hello {{userName}}</span>
+
+</div>
+
+<div class="content">
+
+  <h2>{{ pageTitle }}</h2>
+  
+  <app-user-connect *ngIf="!userName" (userNameEmitter)="loginLike($event)" class="app_user_connect"></app-user-connect>
+
+  <!-- MAIN BOARD -->
+  <div *ngIf="userName" class="board">
+    <!-- ADD ITEM CTRL -->
+    <div class="form-group" style="display: flex;">
+        <input #newItem placeholder="add an item"
+          (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+          class="form-control"
+          id="addItemInput"
+        />
+        &nbsp;
+        <button class="btn btn-primary" (click)="addItem(newItem.value); newItem.value = ''">Add</button>
+    </div>
+    
+    <!-- feedback -->
+    <div [className]="currNewItem ? 'add_item_feedback_yes_msg' : 'add_item_feedback_no_msg'">
+      {{newItemFeedback}}
+    </div>
+
+
+    <!-- pagination -->
+    <div class="pagination">
+      <span (click)="numOfItems = 5" class="paging" title="Show 5 items"> 5 </span>
+      |
+      <span (click)="numOfItems = 10" class="paging" title="Show 10 items"> 10 </span>
+      |
+      <span (click)="numOfItems = 15" class="paging" title="Show 15 items"> 15 </span>
+    </div>
+
+    <!-- Filtering -->
+    <div class="btn-wrapper">
+      <button
+        class="btn btn-menu"
+        [class.active]="filter == 'all'"
+        (click)="filter = 'all'">
+        All
+      </button>
+
+      <button
+        class="btn btn-menu"
+        [class.active]="filter == 'active'"
+        (click)="filter = 'active'">
+        Active
+      </button>
+
+      <button
+        class="btn btn-menu"
+        [class.active]="filter == 'done'"
+        (click)="filter = 'done'">
+        Done
+      </button>
+    </div>
+
+    <br clear="all" />
+    <!-- ITEMS LIST -->
+    <ul>
+      <li *ngFor="let item of items">
+        <!-- ITEM component -->
+        <app-item (remove)="remove(item)" [item]="item"></app-item>
+      </li>
+    </ul>
+
+    <div class="bottom_paging">
+      <span (click)="prevPage()" class="prev" title="Prev list"> << </span>
+      <span>Page: {{ currentPage+1 }} / {{totalPages}}</span>
+      <span (click)="nextPage()" class="next" title="Next list"> >> </span>
+    </div>
+  </div>
+
+
+</div>

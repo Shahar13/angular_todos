@@ -1,0 +1,28 @@
+<div class="item">
+
+    <input [id]="item.title" type="checkbox" 
+            (change)="item.completed = !item.completed" 
+            [checked]="item.completed" class="ckbx" />
+    <label [for]="item.title" style="width: 60%;">{{item.title}}</label>
+    <span *ngIf="item.new" class="feedback_new" title="New task">New</span>&nbsp;
+  
+    <div class="btn-wrapper" *ngIf="!editable" style="margin: 0;"> 
+        <span class="feedback_date">{{item.date | date}}</span>
+        &nbsp;
+        <i id="edit_item_{{item.id}}" (click)="editable = !editable" class="far fa-edit" title="Edit"></i>
+        &nbsp;
+        <i id="delete_item_{{item.id}}" (click)="remove.emit();" class="fas fa-trash-alt" title="Delete"></i>
+    </div>
+  
+    <!-- ON EDIT -->
+    <div *ngIf="editable">
+        <input class="sm-text-input" placeholder="edit item" [value]="item.title" #editedItem (keyup.enter)="saveItem(editedItem.value)">
+    
+        <div class="btn-wrapper" style="margin: 0;">
+            <i class="fas fa-remove-format icon_orange" (click)="editable = !editable" title="Cancel editing"></i>
+            &nbsp;
+            <i class="fas fa-piggy-bank icon_orange" (click)="saveItem(editedItem.value)" title="Save changes"></i>
+        </div>
+    </div>
+  
+</div>
